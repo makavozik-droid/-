@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замовлення книги</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+			background-image: url('https://i.pinimg.com/1200x/8a/33/e2/8a33e2efe4fd5fad4d1220118a2c9b53.jpg');
+			background-size: cover; 
+            background-repeat: no-repeat;
+			background-position: center center;
+        }
+        header {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        header h1 {
+            color: #2c3e50;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .order-form {
+            flex: 2;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="tel"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button[type="submit"]:hover {
+            background-color: #27ae60;
+        }
+        aside {
+            flex: 1;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        aside img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        aside h2 {
+            font-size: 24px;
+            color: #e74c3c;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            color: #7f8c8d;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Замовлення книги</h1>
+        <nav role="navigation" aria-label="Меню книгарні">
+            <ul>
+                <li><a href="#">Головна</a></li>
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form class="order-form" aria-live="polite">
+            <div class="form-group">
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" name="name" required minlength="2" aria-required="true" aria-describedby="name-error">
+                <span id="name-error" class="error-message">Введіть ім’я</span>
+            </div>
+
+            <div class="form-group">
+                <label for="surname">Прізвище:</label>
+                <input type="text" id="surname" name="surname" required minlength="2" aria-required="true" aria-describedby="surname-error">
+                <span id="surname-error" class="error-message">Введіть прізвище</span>
+            </div>
+
+            <div class="form-group">
+                <label for="tel">Телефон:</label>
+                <input type="tel" id="tel" name="tel" required pattern="\+380[0-9]{9}" aria-required="true" aria-describedby="tel-error">
+                <span id="tel-error" class="error-message">Телефон має бути у форматі +380XXXXXXXXX</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
+                <span id="email-error" class="error-message">Введіть коректну email-адресу</span>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Область:</label>
+                <select id="region" name="region" required aria-required="true">
+                    <option value="">Виберіть область</option>
+                    <option value="kyiv">Київська</option>
+                    <option value="lviv">Львівська</option>
+                    <option value="odesa">Одеська</option>
+					<option value="odesa">Сумська</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="city">Місто:</label>
+                <select id="city" name="city" required aria-required="true">
+                    <option value="">Виберіть місто</option>
+                    <option value="kyiv">Київ</option>
+                    <option value="lviv">Львів</option>
+                    <option value="odesa">Одеса</option>
+					<option value="odesa">Шостка</option>
+					<option value="odesa">Суми</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Спосіб доставки:</label>
+                <div class="radio-group">
+                    <input type="radio" id="courier" name="delivery" value="courier" required aria-required="true">
+                    <label for="courier">Кур’єр</label>
+                    
+                    <input type="radio" id="post" name="delivery" value="post">
+                    <label for="post">Пошта</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Спосіб оплати:</label>
+                <div class="radio-group">
+                    <input type="radio" id="card" name="payment" value="card" required aria-required="true">
+                    <label for="card">Картка</label>
+                    
+                    <input type="radio" id="cash" name="payment" value="cash">
+                    <label for="cash">Готівка</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required aria-required="true" aria-label="Ознайомлений з умовами">
+                    <label for="terms">Ознайомлений з умовами</label>
+                </div>
+            </div>
+
+            <button type="submit" aria-label="Оформити замовлення">Оформити замовлення</button>
+        </form>
+
+        <aside>
+            <h2>1984</h2>
+            <img src="https://i.pinimg.com/736x/6c/40/34/6c40342311d68d51dfcb0682910b6106.jpg" alt="Обкладинка книги 1984">
+            <p><strong>Ціна:</strong> 250 грн</p>
+            <p><strong>Статус:</strong> В наявності</p>
+            <p><strong>Гарантія:</strong> 14 днів на повернення</p>
+            <p><strong>Постачальник:</strong> Видавництво X</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>© 2025 Книгарня</p>
+    </footer>
+
+    <script>
+        const form = document.querySelector('.order-form');
+        form.addEventListener('submit', (e) => {
+            // Цей код - для демонстрації
+            // В реальному проекті тут буде обробка даних форми
+            e.preventDefault();
+            alert('Замовлення успішно оформлено!');
+        });
+    </script>
+</body>
+</html>
