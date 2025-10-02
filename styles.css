@@ -1,0 +1,230 @@
+/*==========================================================*/
+/* 1. Змінні та основні стилі */
+/*==========================================================*/
+
+/* Використання CSS-змінних для повторюваних кольорів */
+:root {
+    --main-bg-color: #f5f5f5;
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --text-color: #333;
+    --link-color: #1a5276;
+    --hover-color: #e74c3c;
+    --border-color: #bdc3c7;
+    --error-color: #c0392b;
+}
+
+/* Загальні стилі для всього документа */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--main-bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Селектор універсальний: впливає на кожен елемент */
+* {
+    box-sizing: border-box;
+}
+
+/*==========================================================*/
+/* 2. Селектори та їх комбінації */
+/*==========================================================*/
+
+/* Селектор тега */
+h1, h2, h3 {
+    color: var(--secondary-color);
+}
+
+/* Селектор класу */
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Селектор ID */
+#main-content {
+    padding-bottom: 50px;
+}
+
+/* Комбінація селекторів: вибирає h2 всередині .header */
+.header h2 {
+    font-size: 1.8em;
+    text-transform: uppercase;
+}
+
+/* Селектор нащадка: вибирає a всередині ul li */
+ul li a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Селектор прямого нащадка: вибирає елементи p, які є прямими дочірніми елементами .article */
+.article > p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* Селектор сусіднього елемента: вибирає h2, що йде відразу після h1 */
+h1 + h2 {
+    margin-top: -15px;
+    font-style: italic;
+}
+
+/* Селектор елементів з певним атрибутом */
+[data-info] {
+    border-left: 5px solid var(--primary-color);
+    padding-left: 10px;
+}
+
+/* Селектор для елементів з атрибутом href, який починається з https */
+a[href^="https"] {
+    color: green;
+}
+
+/*==========================================================*/
+/* 3. Інтерактивні елементи та псевдокласи */
+/*==========================================================*/
+
+/* Універсальний селектор курсора */
+a, button, input[type="submit"] {
+    cursor: pointer;
+}
+
+/* Стилі для посилань */
+a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+/* Стилі для полів форми */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+/* Поки поле активне - змінюємо колір бордерів */
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Зміна кольору повідомлення при фокусі (як приклад) */
+.form-message:focus-within {
+    color: var(--hover-color);
+}
+
+/* Псевдокласи :first-child, :last-child */
+li:first-child {
+    font-weight: bold;
+}
+li:last-child {
+    font-style: italic;
+}
+
+/*==========================================================*/
+/* 4. Туторіал: Робота з зображенням */
+/*==========================================================*/
+
+/* Правила для адаптації зображень та додавання тіні */
+.article-image {
+    max-width: 100%; /* Зображення ніколи не буде ширшим за свій контейнер */
+    height: auto;    /* Зберігає пропорції */
+    display: block;  /* Видаляє зайві відступи */
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+/* Псевдоелементи ::before та ::after для декорування */
+.article-image::after {
+    content: "© Фото автора";
+    display: block;
+    text-align: right;
+    font-size: 0.8em;
+    color: var(--secondary-color);
+    margin-top: -15px;
+}
+
+/*==========================================================*/
+/* 5. Туторіал: Анімації та перспективи */
+/*==========================================================*/
+
+/* Ключові кадри для анімації плавного з'явлення */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Застосування анімації */
+.card {
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Використання 3D-трансформацій та перспективи */
+.card:hover {
+    transform: rotateY(5deg) scale(1.02);
+    perspective: 1000px;
+}
+
+/*==========================================================*/
+/* 6. Туторіал: Позиціювання */
+/*==========================================================*/
+
+/* Position: relative (відносне позиціювання) */
+.relative-container {
+    position: relative;
+}
+
+/* Position: absolute (абсолютне позиціювання) */
+.absolute-element {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--hover-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* Position: fixed (фіксоване позиціювання) */
+.fixed-element {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+/*==========================================================*/
+/* 7. Адаптивність (Responsive Design) */
+/*==========================================================*/
+
+/* Стилі для планшетів (ширина менше 768px) */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    body {
+        font-size: 14px;
+    }
+}
+
+/* Стилі для мобільних пристроїв (ширина менше 480px) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    .absolute-element {
+        position: static; /* Змінюємо позицію на мобільних, щоб не заважав */
+        margin-top: 10px;
+    }
+}
